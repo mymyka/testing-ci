@@ -3,6 +3,11 @@ description: "Run mypy type checker"
 runs:
   using: composite
   steps:
+    - uses: actions/cache@v4
+      with:
+        path: ~/.cache/uv
+        key: uv-${{ runner.os }}-${{ hashFiles('uv.lock') }}
+        restore-keys: uv-${{ runner.os }}-
     - shell: bash
       run: echo "🔍 Running mypy ..."
     - shell: bash

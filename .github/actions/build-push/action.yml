@@ -14,6 +14,8 @@ runs:
         fi
 
     - shell: bash
+      run: echo "♻️ Restoring Docker layer cache from GitHub Actions cache ..."
+    - shell: bash
       run: echo "🐳 Building image ghcr.io/${{ github.repository }}:${{ steps.tag.outputs.tag }} ..."
     - shell: bash
       run: echo "📤 Pushing image to GHCR ..."
