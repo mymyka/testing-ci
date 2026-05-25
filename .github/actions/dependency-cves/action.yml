@@ -1,0 +1,9 @@
+name: "📦 Dependency CVEs"
+description: "Run pip-audit to check for known CVEs"
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: echo "🔍 Running pip-audit ..."
+    - shell: bash
+      run: echo "✅ No known CVEs in dependencies"

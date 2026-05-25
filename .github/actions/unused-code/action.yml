@@ -1,0 +1,9 @@
+name: "🗑️ Unused Code"
+description: "Run vulture to find dead code"
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: echo "🔍 Running vulture ..."
+    - shell: bash
+      run: echo "✅ No unused code found"

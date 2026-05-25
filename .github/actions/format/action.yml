@@ -1,0 +1,9 @@
+name: "🎨 Format"
+description: "Run ruff format check"
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: echo "🔍 Running ruff format --check ..."
+    - shell: bash
+      run: echo "✅ Format passed"

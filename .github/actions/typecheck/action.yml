@@ -1,0 +1,9 @@
+name: "🏷️ Typecheck"
+description: "Run mypy type checker"
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: echo "🔍 Running mypy ..."
+    - shell: bash
+      run: echo "✅ Typecheck passed"

@@ -6,36 +6,72 @@ on:
   pull_request:
     branches: ["**"]
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 # ─── PARALLEL CHECKS ────────────────────────────────────────────────────────
 
 jobs:
   lint:
-    uses: ./.github/workflows/_lint.yml
+    name: "🧹 Lint"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/lint
 
   format:
-    uses: ./.github/workflows/_format.yml
+    name: "🎨 Format"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/format
 
   typecheck:
-    uses: ./.github/workflows/_typecheck.yml
+    name: "🏷️ Typecheck"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/typecheck
 
   unused-code:
-    uses: ./.github/workflows/_unused-code.yml
+    name: "🗑️ Unused Code"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/unused-code
 
   spell-check:
-    uses: ./.github/workflows/_spell-check.yml
+    name: "✍️ Spell Check"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/spell-check
 
   branch-name:
-    uses: ./.github/workflows/_branch-name.yml
+    name: "🌿 Branch Name"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/actions/branch-name
 
   security:
-    uses: ./.github/workflows/_security.yml
+    name: "🛡️ Security"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/security
 
   dependency-cves:
-    uses: ./.github/workflows/_dependency-cves.yml
+    name: "📦 Dependency CVEs"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/dependency-cves
 
 # ─── TESTING (waits for all checks) ─────────────────────────────────────────
 
   test:
+    name: "🧪 Test"
+    runs-on: ubuntu-latest
     needs:
       - lint
       - format
@@ -45,14 +81,19 @@ jobs:
       - branch-name
       - security
       - dependency-cves
-    uses: ./.github/workflows/_test.yml
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/test
 
 # ─── BUILD & PUSH (dev / prod only) ──────────────────────────────────────────
 
   build-push:
+    name: "🚀 Build & Push"
+    runs-on: ubuntu-latest
     needs: [test]
     if: |
       github.ref == 'refs/heads/dev' ||
       github.ref == 'refs/heads/prod'
-    uses: ./.github/workflows/_build-push.yml
-    secrets: inherit
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/build-push

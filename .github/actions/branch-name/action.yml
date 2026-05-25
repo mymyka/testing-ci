@@ -1,0 +1,17 @@
+name: "🌿 Branch Name"
+description: "Validate branch name against allowed patterns"
+runs:
+  using: composite
+  steps:
+    - name: Validate branch name
+      shell: bash
+      run: |
+        BRANCH="${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}"
+        echo "🔍 Checking branch name: $BRANCH"
+        if echo "$BRANCH" | grep -qE '^(main|master|dev|prod|feat|fix|chore|hotfix|release)(/[a-z0-9._-]+)?$'; then
+          echo "✅ Branch name '$BRANCH' is valid"
+        else
+          echo "❌ Branch name '$BRANCH' does not match allowed pattern"
+          echo "   Allowed: main | master | dev | prod | feat/* | fix/* | chore/* | hotfix/* | release/*"
+          exit 1
+        fi

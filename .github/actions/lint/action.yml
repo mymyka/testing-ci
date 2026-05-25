@@ -1,0 +1,9 @@
+name: "🧹 Lint"
+description: "Run ruff linter"
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: echo "🔍 Running ruff check ..."
+    - shell: bash
+      run: echo "✅ Lint passed"

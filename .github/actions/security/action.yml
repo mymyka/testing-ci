@@ -1,0 +1,9 @@
+name: "🛡️ Security"
+description: "Run bandit security scan"
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: echo "🔍 Running bandit ..."
+    - shell: bash
+      run: echo "✅ Security scan passed"

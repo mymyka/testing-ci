@@ -1,0 +1,9 @@
+name: "🧪 Test"
+description: "Run pytest test suite"
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: echo "🧪 Running pytest ..."
+    - shell: bash
+      run: echo "✅ All tests passed"

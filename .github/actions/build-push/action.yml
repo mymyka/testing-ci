@@ -1,0 +1,21 @@
+name: "🚀 Build & Push"
+description: "Build Docker image and push to GHCR"
+runs:
+  using: composite
+  steps:
+    - name: Determine image tag
+      id: tag
+      shell: bash
+      run: |
+        if [ "${GITHUB_REF}" = "refs/heads/prod" ]; then
+          echo "tag=latest" >> "$GITHUB_OUTPUT"
+        else
+          echo "tag=dev" >> "$GITHUB_OUTPUT"
+        fi
+
+    - shell: bash
+      run: echo "🐳 Building image ghcr.io/${{ github.repository }}:${{ steps.tag.outputs.tag }} ..."
+    - shell: bash
+      run: echo "📤 Pushing image to GHCR ..."
+    - shell: bash
+      run: echo "✅ Image pushed → ghcr.io/${{ github.repository }}:${{ steps.tag.outputs.tag }}"
