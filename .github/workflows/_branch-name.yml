@@ -1,11 +1,11 @@
-name: "🌿 Check / Branch Name"
+name: "🌿 Branch Name"
 
 on:
   workflow_call:
 
 jobs:
   branch-name:
-    name: "🌿 Check / Branch Name"
+    name: "🌿 Branch Name"
     runs-on: ubuntu-latest
     steps:
       - name: Validate branch name

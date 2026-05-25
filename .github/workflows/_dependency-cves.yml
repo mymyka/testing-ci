@@ -1,4 +1,4 @@
-name: "📦 Check / Dependency CVEs"
+name: "📦 Dependency CVEs"
 
 on:
   workflow_call:
@@ -8,7 +8,7 @@ env:
 
 jobs:
   dependency-cves:
-    name: "📦 Check / Dependency CVEs"
+    name: "📦 Dependency CVEs"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
