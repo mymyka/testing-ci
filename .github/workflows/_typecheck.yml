@@ -1,4 +1,4 @@
-name: "Check / Typecheck"
+name: "🏷️ Check / Typecheck"
 
 on:
   workflow_call:
@@ -8,7 +8,7 @@ env:
 
 jobs:
   typecheck:
-    name: "Check / Typecheck"
+    name: "🏷️ Check / Typecheck"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

@@ -1,4 +1,4 @@
-name: "Check / Unused Code"
+name: "🗑️ Check / Unused Code"
 
 on:
   workflow_call:
@@ -8,7 +8,7 @@ env:
 
 jobs:
   unused-code:
-    name: "Check / Unused Code"
+    name: "🗑️ Check / Unused Code"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

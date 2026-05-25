@@ -1,4 +1,4 @@
-name: "Check / Security"
+name: "🛡️ Check / Security"
 
 on:
   workflow_call:
@@ -8,7 +8,7 @@ env:
 
 jobs:
   security:
-    name: "Check / Security"
+    name: "🛡️ Check / Security"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

@@ -1,4 +1,4 @@
-name: "Check / Spell Check"
+name: "✍️ Check / Spell Check"
 
 on:
   workflow_call:
@@ -8,7 +8,7 @@ env:
 
 jobs:
   spell-check:
-    name: "Check / Spell Check"
+    name: "✍️ Check / Spell Check"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
