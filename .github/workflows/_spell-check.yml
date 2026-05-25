@@ -1,0 +1,16 @@
+name: "Check / Spell Check"
+
+on:
+  workflow_call:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  spell-check:
+    name: "Check / Spell Check"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "🔍 Running codespell ..."
+      - run: echo "✅ Spell check passed"

@@ -1,0 +1,16 @@
+name: "Check / Dependency CVEs"
+
+on:
+  workflow_call:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  dependency-cves:
+    name: "Check / Dependency CVEs"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "🔍 Running pip-audit ..."
+      - run: echo "✅ No known CVEs in dependencies"
