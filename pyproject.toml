@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
+    "alembic>=1.15.2",
     "fastapi>=0.136.3",
     "grafana-foundation-sdk>=1769699998!10.1.0",
     "loguru>=0.7.3",
